@@ -67,10 +67,16 @@ You can use the [Members](https://wordpress.org/plugins/members/) plugin to edit
 
 == ChangeLog ==
 
+= 1.0-beta-2 =
+Adding support for translations
+
 = 1.0-beta-1 =
 Initial release
 
 == Upgrade Notice ==
+
+= 1.0-beta-2 =
+Adding support for translations
 
 = 1.0-beta-1 =
 Initial release
