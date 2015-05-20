@@ -364,26 +364,22 @@ class GF_Approvals extends GFFeedAddOn {
 				foreach ( $entries as $entry ) {
 					$form = GFAPI::get_form( $entry['form_id'] );
 					$user = get_user_by( 'id', (int) $entry['created_by'] );
+					$url_entry = sprintf( 'admin.php?page=gf_entries&view=entry&id=%d&lid=%d', $entry['form_id'], $entry['id'] );
+					$url_entry = esc_url( admin_url( $url_entry ) );
 					?>
 					<tr>
 						<td>
 							<?php
-							$url_all_pending = sprintf( 'admin.php?page=gf_entries&id=%d&s=pending&field_id=approval_status_%s&operator=is', $entry['form_id'], $current_user->ID );
-							$url_all_pending = admin_url( $url_all_pending );
-							echo "<a href='{$url_all_pending}'>{$form['title']}</a>";
+							echo "<a href='{$url_entry}'>{$form['title']}</a>";
 							?>
 						</td>
 						<td>
 							<?php
-							$url_all_for_user = sprintf( 'admin.php?page=gf_entries&id=%d&s=%d&field_id=created_by&operator=is', $entry['form_id'], $user->ID );
-							$url_all_for_user = admin_url( $url_all_for_user );
-							echo "<a href='{$url_all_for_user}'>{$user->display_name}</a>";
+							echo "<a href='{$url_entry}'>{$user->display_name}</a>";
 							?>
 						</td>
 						<td>
 							<?php
-							$url_entry = sprintf( 'admin.php?page=gf_entries&view=entry&id=%d&lid=%d', $entry['form_id'], $entry['id'] );
-							$url_entry = admin_url( $url_entry );
 							echo "<a href='{$url_entry}'>{$entry['date_created']}</a>";
 							?>
 						</td>
