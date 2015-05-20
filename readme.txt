@@ -19,6 +19,7 @@ Adds simple approval processes to forms.
 If you use it and like it [please consider giving it a rating](http://wordpress.org/plugins/gravityformsapprovals/).
 
 Stay informed: [Facebook](https://www.facebook.com/hentydevelopment)
+
 More about me: [Steven Henty](http://www.stevenhenty.com)
 
 If this add-on doesn't quite meet your needs, or if you'd like an add-on that will grow with your workflow needs you may want to check out [Gravity Flow](http://gravityflow.io)
