@@ -1,0 +1,125 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Gravity Forms Approvals\n"
+"POT-Creation-Date: 2015-05-20 18:03+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: approvals.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: class-gf-approvals.php:72
+msgid "Forms Pending My Approval"
+msgstr ""
+
+#: class-gf-approvals.php:85
+msgid "None"
+msgstr ""
+
+#: class-gf-approvals.php:92 class-gf-approvals.php:101
+#: class-gf-approvals.php:128
+msgid "Approver"
+msgstr ""
+
+#: class-gf-approvals.php:96 class-gf-approvals.php:127
+msgid "Description"
+msgstr ""
+
+#: class-gf-approvals.php:107
+msgid ""
+"Build the conditional logic that should be applied to this feed before it's allowed to be processed."
+msgstr ""
+
+#: class-gf-approvals.php:108
+msgid "Condition"
+msgstr ""
+
+#: class-gf-approvals.php:110
+msgid "Enable Condition for this approver"
+msgstr ""
+
+#: class-gf-approvals.php:111
+msgid "Require approval from this user if"
+msgstr ""
+
+#: class-gf-approvals.php:185
+msgid "Approval Status:"
+msgstr ""
+
+#: class-gf-approvals.php:191 class-gf-approvals.php:210
+msgid "Pending"
+msgstr ""
+
+#: class-gf-approvals.php:192 class-gf-approvals.php:211
+#: class-gf-approvals.php:288
+msgid "Approved"
+msgstr ""
+
+#: class-gf-approvals.php:193 class-gf-approvals.php:212
+#: class-gf-approvals.php:290
+msgid "Rejected"
+msgstr ""
+
+#: class-gf-approvals.php:203
+msgid "Approval Status"
+msgstr ""
+
+#: class-gf-approvals.php:284
+msgid "Pending Approval"
+msgstr ""
+
+#: class-gf-approvals.php:325
+msgid "Approve"
+msgstr ""
+
+#: class-gf-approvals.php:328
+msgid "Reject"
+msgstr ""
+
+#: class-gf-approvals.php:356
+msgid "Form"
+msgstr ""
+
+#: class-gf-approvals.php:357
+msgid "User"
+msgstr ""
+
+#: class-gf-approvals.php:358
+msgid "Submission Date"
+msgstr ""
+
+#: class-gf-approvals.php:401
+msgid "Hurray, inbox zero!"
+msgstr ""
+
+#: class-gf-approvals.php:408
+msgid "This entry has been approved and can no longer be edited"
+msgstr ""
+
+#: class-gf-approvals.php:412
+msgid "Form is approved or rejected"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Gravity Forms Approvals"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "http://www.stevenhenty.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Add simple approvals to Gravity Forms"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Steve Henty"
+msgstr ""

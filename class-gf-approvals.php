@@ -69,7 +69,7 @@ class GF_Approvals extends GFFeedAddOn {
 
 	//Registers the dashboard widget
 	public function dashboard_setup() {
-		wp_add_dashboard_widget( 'gf_approvals_dashboard', 'Forms Pending My Approval', array( $this, 'dashboard' ) );
+		wp_add_dashboard_widget( 'gf_approvals_dashboard', __( 'Forms Pending My Approval', 'gravityformsapprovals' ), array( $this, 'dashboard' ) );
 	}
 
 	/**
@@ -82,33 +82,33 @@ class GF_Approvals extends GFFeedAddOn {
 
 		$accounts = get_users();
 
-		$account_choices = array( array( 'label' => 'None', 'value' => '' ) );
+		$account_choices = array( array( 'label' => __( 'None', 'gravityformsapprovals' ), 'value' => '' ) );
 		foreach ( $accounts as $account ) {
 			$account_choices[] = array( 'label' => $account->display_name, 'value' => $account->ID );
 		}
 
 		return array(
 			array(
-				'title'  => 'Approver',
+				'title'  => __( 'Approver', 'gravityformsapprovals' ),
 				'fields' => array(
 					array(
 						'name' => 'description',
-						'label'       => 'Description',
+						'label'       => __( 'Description', 'gravityformsapprovals' ),
 						'type'        => 'text',
 					),
 					array(
 						'name'     => 'approver',
-						'label'    => 'Approver',
+						'label'    => __( 'Approver', 'gravityformsapprovals' ),
 						'type'     => 'select',
 						'choices'  => $account_choices,
 					),
 					array(
 						'name'           => 'condition',
-						'tooltip'        => "Build the conditional logic that should be applied to this feed before it's allowed to be processed.",
-						'label'          => 'Condition',
+						'tooltip'        => __( "Build the conditional logic that should be applied to this feed before it's allowed to be processed.", 'gravityformsapprovals' ),
+						'label'          => __( 'Condition', 'gravityformsapprovals' ),
 						'type'           => 'feed_condition',
-						'checkbox_label' => 'Enable Condition for this approver',
-						'instructions'   => 'Require approval from this user if',
+						'checkbox_label' => __( 'Enable Condition for this approver', 'gravityformsapprovals' ),
+						'instructions'   => __( 'Require approval from this user if', 'gravityformsapprovals' ),
 					),
 				)
 			),
@@ -124,8 +124,8 @@ class GF_Approvals extends GFFeedAddOn {
 	 */
 	function feed_list_columns() {
 		return array(
-			'description' => 'Description',
-			'approver' => 'Approver',
+			'description' => __( 'Description', 'gravityformsapprovals' ),
+			'approver'    => __( 'Approver', 'gravityformsapprovals' ),
 		);
 	}
 
@@ -182,15 +182,15 @@ class GF_Approvals extends GFFeedAddOn {
 			$display_name = $user_info ? $user_info->display_name : $approver;
 
 			$entry_meta[ 'approval_status_' . $approver ] = array(
-				'label'                      => 'Approval Status: ' . $display_name,
+				'label'                      => __( 'Approval Status:', 'gravityformsapprovals' ) . ' ' . $display_name,
 				'is_numeric'                 => false,
 				'is_default_column'          => false, // this column will not be displayed by default on the entry list
 				'filter'                     => array(
 					'operators' => array( 'is', 'isnot' ),
 					'choices'   => array(
-						array( 'value' => 'pending', 'text' => 'Pending' ),
-						array( 'value' => 'approved', 'text' => 'Approved' ),
-						array( 'value' => 'rejected', 'text' => 'Rejected' ),
+						array( 'value' => 'pending', 'text' => __( 'Pending', 'gravityformsapprovals' ) ),
+						array( 'value' => 'approved', 'text' => __( 'Approved', 'gravityformsapprovals' ) ),
+						array( 'value' => 'rejected', 'text' => __( 'Rejected', 'gravityformsapprovals' ) ),
 					)
 				)
 			);
@@ -200,16 +200,16 @@ class GF_Approvals extends GFFeedAddOn {
 		}
 		if ( $has_approver ) {
 			$entry_meta['approval_status'] = array(
-				'label'                      => 'Approval Status',
+				'label'                      => __( 'Approval Status', 'gravityformsapprovals' ),
 				'is_numeric'                 => false,
 				'update_entry_meta_callback' => array( $this, 'update_approval_status' ),
 				'is_default_column'          => true, // this column will be displayed by default on the entry list
 				'filter'                     => array(
 					'operators' => array( 'is', 'isnot' ),
 					'choices'   => array(
-						array( 'value' => 'pending', 'text' => 'Pending' ),
-						array( 'value' => 'approved', 'text' => 'Approved' ),
-						array( 'value' => 'rejected', 'text' => 'Rejected' ),
+						array( 'value' => 'pending', 'text' => __( 'Pending', 'gravityformsapprovals' ) ),
+						array( 'value' => 'approved', 'text' => __( 'Approved', 'gravityformsapprovals' ) ),
+						array( 'value' => 'rejected', 'text' => __( 'Rejected', 'gravityformsapprovals' ) ),
 					)
 				)
 			);
@@ -281,13 +281,13 @@ class GF_Approvals extends GFFeedAddOn {
 				GFCommon::send_notification( $notification, $form, $entry );
 			}
 		}
-		$status = 'Pending Approval';
+		$status = __( 'Pending Approval', 'gravityformsapprovals' );
 		$approve_icon = '<i class="fa fa-check" style="color:green"></i>';
 		$reject_icon = '<i class="fa fa-times" style="color:red"></i>';
 		if ( $entry['approval_status'] == 'approved' ) {
-			$status = $approve_icon . ' Approved';
+			$status = $approve_icon . ' ' . __( 'Approved', 'gravityformsapprovals' );
 		} elseif ( $entry['approval_status'] == 'rejected' ) {
-			$status = $reject_icon .' Rejected';
+			$status = $reject_icon . ' ' . __( 'Rejected', 'gravityformsapprovals' );
 		}
 		?>
 		<div class="postbox">
@@ -322,10 +322,10 @@ class GF_Approvals extends GFFeedAddOn {
 						<form method="post" id="sidebar_form" enctype='multipart/form-data'>
 							<?php wp_nonce_field( 'gf_approvals' );	?>
 							<button name="gf_approvals_status" value="approved" type="submit" class="button">
-								<?php echo $approve_icon; ?> Approve
+								<?php echo $approve_icon; ?> <?php _e( 'Approve', 'gravityformsapprovals' ); ?>
 							</button>
 							<button name="gf_approvals_status" value="rejected" type="submit" class="button">
-								<?php echo $reject_icon; ?> Reject
+								<?php echo $reject_icon; ?> <?php _e( 'Reject', 'gravityformsapprovals' ); ?>
 							</button>
 						</form>
 					<?php
@@ -353,9 +353,9 @@ class GF_Approvals extends GFFeedAddOn {
 			<table class="widefat" cellspacing="0" style="border:0px;">
 				<thead>
 				<tr>
-					<td><i>Form</i></td>
-					<td><i>User</i></td>
-					<td><i>Submission Date</i></td>
+					<td><i><?php _e( 'Form', 'gravityformsapprovals' ); ?></i></td>
+					<td><i><?php _e( 'User', 'gravityformsapprovals' ); ?></i></td>
+					<td><i><?php _e( 'Submission Date', 'gravityformsapprovals' ); ?></i></td>
 				</tr>
 				</thead>
 
@@ -394,18 +394,18 @@ class GF_Approvals extends GFFeedAddOn {
 		} else {
 			?>
 			<div>
-				Hurray, inbox zero!.
+				<?php _e( 'Hurray, inbox zero!', 'gravityformsapprovals' ); ?>
 			</div>
 		<?php
 		}
 	}
 
 	function remove_entrydetail_update_button( $button ) {
-		return 'This entry has been approved and can no longer be edited';
+		return __( 'This entry has been approved and can no longer be edited', 'gravityformsapprovals' );
 	}
 
 	function add_notification_event( $events ) {
-		$events['form_approval'] = 'Form is approved or rejected';
+		$events['form_approval'] = __( 'Form is approved or rejected', 'gravityformsapprovals' );
 		return $events;
 	}
 
