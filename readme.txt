@@ -8,7 +8,7 @@ Stable tag: 1.0-beta-2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Add a simple approval workflow process to your forms.
+Add simple approval workflow processes to your Gravity Forms.
 
 == Description ==
 
@@ -18,12 +18,9 @@ Adds simple approval processes to forms.
 
 If you use it and like it [please consider giving it a rating](http://wordpress.org/plugins/gravityformsapprovals/).
 
-Stay informed: [Facebook](https://www.facebook.com/hentydevelopment)
+If this add-on doesn't quite meet your needs, or if you'd like an add-on that will grow with your workflow needs you may want to check out [Gravity Flow](http://gravityflow.io). Gravity Flow supports multiple steps, process branching and loops, user input, approval policies, advanced conditional routing, timestamps, audit trail, comments, and it has a complete interface for users with admin pages for pending tasks, submitting forms, and viewing the status of previously submitted forms.
 
-More about me: [Steven Henty](http://www.stevenhenty.com)
-
-If this add-on doesn't quite meet your needs, or if you'd like an add-on that will grow with your workflow needs you may want to check out [Gravity Flow](http://gravityflow.io)
-
+Stay in touch on [Facebook](https://www.facebook.com/hentydevelopment) or visit my [blog](http://www.stevenhenty.com).
 
 = Requirements =
 
