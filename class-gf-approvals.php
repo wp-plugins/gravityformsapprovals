@@ -129,6 +129,15 @@ class GF_Approvals extends GFFeedAddOn {
 		);
 	}
 
+	public function get_column_value_approver( $item ){
+		if ( ! isset( $item['meta']['approver'] ) ) {
+			return '';
+		}
+
+		$user = get_user_by( 'id', $item['meta']['approver'] );
+		return $user ? $user->display_name : $item['meta']['approver'];
+	}
+
 	/**
 	 * Fires after form submission only if conditions are met.
 	 *
@@ -300,9 +309,12 @@ class GF_Approvals extends GFFeedAddOn {
 					foreach ( $this->get_feeds( $form['id'] ) as $feed ) {
 						if ( $feed['is_active'] ) {
 							$approver = $feed['meta']['approver'];
-							if ( ! empty( $entry[ 'approval_status_' . $approver ] ) ) {
+							if ( isset( $entry[ 'approval_status_' . $approver ] ) ) {
 								$user_info = get_user_by( 'id', $approver );
 								$status    = $entry[ 'approval_status_' . $approver ];
+								if ( $status === false ) {
+									$status = 'pending';
+								}
 								if ( $status != 'pending' ) {
 									$has_been_approved = true;
 								}
@@ -317,7 +329,7 @@ class GF_Approvals extends GFFeedAddOn {
 				</ul>
 				<div>
 					<?php
-					if ( isset( $entry[ 'approval_status_' . $current_user->ID ] ) && $entry[ 'approval_status_' . $current_user->ID ] == 'pending' ) {
+					if ( isset( $entry[ 'approval_status_' . $current_user->ID ] ) && ( $entry[ 'approval_status_' . $current_user->ID ] == 'pending' || $entry[ 'approval_status_' . $current_user->ID ] === false ) ) {
 						?>
 						<form method="post" id="sidebar_form" enctype='multipart/form-data'>
 							<?php wp_nonce_field( 'gf_approvals' );	?>

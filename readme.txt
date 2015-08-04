@@ -4,7 +4,7 @@ Donate link: http://www.stevenhenty.com/products/wordpress-plugins/donate
 Tags: gravity forms, approvals, workflow
 Requires at least: 4.0
 Tested up to: 4.2.2
-Stable tag: 1.0-beta-2
+Stable tag: 1.0-beta-3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ Adds simple approval processes to forms.
 
 If you use it and like it [please consider giving it a rating](http://wordpress.org/plugins/gravityformsapprovals/).
 
-If this add-on doesn't quite meet your needs, or if you'd like an add-on that will grow with your workflow needs you may want to check out [Gravity Flow](http://gravityflow.io). Gravity Flow supports multiple steps, process branching and loops, user input, approval policies, advanced conditional routing, timestamps, audit trail, comments, and it has a complete interface for users with admin pages for pending tasks, submitting forms, and viewing the status of previously submitted forms.
+If this add-on doesn't quite meet your needs, or if you'd like an add-on that will grow with your business workflow processes you may want to check out [Gravity Flow](http://gravityflow.io). Gravity Flow supports multiple steps, process branching and loops, user input, approval policies, advanced conditional routing, timestamps, audit trail, comments, and it has a complete interface for users with admin pages for pending tasks, submitting forms, and viewing the status of previously submitted forms.
 
 Stay in touch on [Facebook](https://www.facebook.com/hentydevelopment) or visit my [blog](http://www.stevenhenty.com).
 
@@ -64,6 +64,10 @@ You can use the [Members](https://wordpress.org/plugins/members/) plugin to edit
 
 == ChangeLog ==
 
+= 1.0-beta-3 =
+Fixed an issue with the entry detail page where the approval buttons won't appear if the approver is changed in the feed settings.
+
+
 = 1.0-beta-2 =
 Adding support for translations
 
@@ -71,6 +75,9 @@ Adding support for translations
 Initial release
 
 == Upgrade Notice ==
+
+= 1.0-beta-3 =
+Fixed an issue with the entry detail page where the approval buttons won't appear if the approver is changed in the feed settings.
 
 = 1.0-beta-2 =
 Adding support for translations

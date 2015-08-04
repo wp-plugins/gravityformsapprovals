@@ -1,3 +1,7 @@
 -------------------------------------------------------------------------------------------------------------------
+Version 1.0-beta-3
+	- Fixed an issue with the entry detail page where the approval buttons won't appear if the approver is changed in the feed settings.
+
+-------------------------------------------------------------------------------------------------------------------
 Version 1.0-beta-2
 	- Added support for translations
