@@ -1,10 +1,8 @@
 <?php
 
-
-
 // Make sure Gravity Forms is active and already loaded.
 if ( ! class_exists( 'GFForms' ) ) {
-die();
+	die();
 }
 
 // The Add-On Framework is not loaded by default.
@@ -38,6 +36,27 @@ class GF_Approvals extends GFFeedAddOn {
 	// Short version of the plugin title to be used on menus and other places where a less verbose string is useful.
 	protected $_short_title = 'Approvals';
 
+	// ------------ Permissions -----------
+
+	/**
+	 * @var array Members plugin integration. List of capabilities to add to roles.
+	 */
+	protected $_capabilities = array(
+		'gravityformsapprovals_form_settings',
+		'gravityformsapprovals_uninstall',
+	);
+
+	/**
+	 * @var string|array A string or an array of capabilities or roles that have access to the form settings
+	 */
+	protected $_capabilities_form_settings = array( 'gravityformsapprovals_form_settings' );
+
+	/**
+	 * @var string|array A string or an array of capabilities or roles that can uninstall the plugin
+	 */
+	protected $_capabilities_uninstall = array( 'gravityformsapprovals_uninstall' );
+
+
 	private static $_instance = null;
 
 	public static function get_instance() {
@@ -55,6 +74,8 @@ class GF_Approvals extends GFFeedAddOn {
 		add_action( 'gform_entry_detail_sidebar_before', array( $this, 'entry_detail_approval_box' ), 10, 2 );
 
 		add_filter( 'gform_notification_events', array( $this, 'add_notification_event' ) );
+
+		add_filter( 'gform_entries_field_value', array( $this, 'filter_gform_entries_field_value' ), 10, 4 );
 
 		if ( GFAPI::current_user_can_any( 'gravityforms_edit_entries' ) ) {
 			add_action( 'wp_dashboard_setup', array( $this, 'dashboard_setup' ) );
@@ -438,6 +459,24 @@ class GF_Approvals extends GFFeedAddOn {
 		if ( isset( $entry['approval_status'] ) && $entry['approval_status'] != 'approved' ) {
 			remove_action( 'gform_after_submission', array( 'GFZapier', 'send_form_data_to_zapier' ) );
 		}
+	}
+
+	function filter_gform_entries_field_value( $value, $form_id, $field_id, $entry ) {
+		$translated_value = $value;
+		if ( $field_id == 'approval_status' ) {
+			switch ( $value ) {
+				case 'pending' :
+					$translated_value = esc_html__( 'Pending', 'gravityformsapprovals' );
+					break;
+				case 'approved' :
+					$translated_value = esc_html__( 'Approved', 'gravityformsapprovals' );
+					break;
+				case 'rejected' :
+					$translated_value = esc_html__( 'Rejected', 'gravityformsapprovals' );
+					break;
+			}
+		}
+		return $translated_value;
 	}
 
 }

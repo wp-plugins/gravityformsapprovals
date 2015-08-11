@@ -1,4 +1,10 @@
 -------------------------------------------------------------------------------------------------------------------
+Version 1.0-beta-4
+	- Added the gravityformsapprovals_form_settings and gravityformsapprovals_uninstall capabilities for integration with the Members plugin.
+	- Updated some strings to be translatable.
+	- Fixed an issue with form settings tab which might not appear under certain conditions.
+
+-------------------------------------------------------------------------------------------------------------------
 Version 1.0-beta-3
 	- Fixed an issue with the entry detail page where the approval buttons won't appear if the approver is changed in the feed settings.
 

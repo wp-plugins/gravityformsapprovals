@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms Approvals
 Plugin URI: http://www.stevenhenty.com
 Description: Add simple approvals to Gravity Forms
-Version: 1.0-beta-3
+Version: 1.0-beta-4
 Author: Steve Henty
 Author URI: http://www.stevenhenty.com
 License: GPL-2.0+
@@ -27,13 +27,18 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-define( 'GF_APPROVALS_VERSION', '1.0-beta-3' );
+define( 'GF_APPROVALS_VERSION', '1.0-beta-4' );
 
 add_action( 'gform_loaded', array( 'GF_Approvals_Bootstrap', 'load' ), 5 );
 
 class GF_Approvals_Bootstrap {
 
 	public static function load() {
+
+		if ( ! method_exists( 'GFForms', 'include_feed_addon_framework' ) ) {
+			return;
+		}
+
 		require_once( 'class-gf-approvals.php' );
 		GFAddOn::register( 'GF_Approvals' );
 	}

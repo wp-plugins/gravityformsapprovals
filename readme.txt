@@ -4,7 +4,7 @@ Donate link: http://www.stevenhenty.com/products/wordpress-plugins/donate
 Tags: gravity forms, approvals, workflow
 Requires at least: 4.0
 Tested up to: 4.2.2
-Stable tag: 1.0-beta-3
+Stable tag: 1.0-beta-4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,9 @@ Approvers need to be able to edit entries so they need the gravityforms_edit_ent
 = How do I edit the capabilities for a user/role? =
 You can use the [Members](https://wordpress.org/plugins/members/) plugin to edit the capabilities for each Role.
 
+= I don't see the Approvals Form Settings tab =
+Ensure your role is assigned the gravityformsapprovals_form_settings capability using the Members plugin.
+
 
 == Screenshots ==
 
@@ -63,6 +66,11 @@ You can use the [Members](https://wordpress.org/plugins/members/) plugin to edit
 
 
 == ChangeLog ==
+
+= 1.0-beta-4 =
+- Added the gravityformsapprovals_form_settings and gravityformsapprovals_uninstall capabilities for integration with the Members plugin.
+- Updated some strings to be translatable.
+- Fixed an issue with form settings tab which might not appear under certain conditions.
 
 = 1.0-beta-3 =
 Fixed an issue with the entry detail page where the approval buttons won't appear if the approver is changed in the feed settings.
