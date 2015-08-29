@@ -276,7 +276,7 @@ class GF_Approvals extends GFFeedAddOn {
 			$entry_approved = true;
 			$entry_rejected = false;
 			foreach ( $this->get_feeds( $form['id'] ) as $feed ) {
-				if ( $feed['is_active'] ) {
+				if ( $feed['is_active'] && $this->is_feed_condition_met( $feed, $form, $entry ) ) {
 					$approver = $feed['meta']['approver'];
 					if ( ! empty( $entry[ 'approval_status_' . $approver ] ) ) {
 						if ( $entry[ 'approval_status_' . $approver ] != 'approved' ) {
@@ -327,19 +327,25 @@ class GF_Approvals extends GFFeedAddOn {
 				<ul>
 					<?php
 					$has_been_approved = false;
+					$current_user_is_approver = false;
 					foreach ( $this->get_feeds( $form['id'] ) as $feed ) {
 						if ( $feed['is_active'] ) {
 							$approver = $feed['meta']['approver'];
-							if ( isset( $entry[ 'approval_status_' . $approver ] ) ) {
+							if ( $feed['is_active'] && $this->is_feed_condition_met( $feed, $form, $entry ) ) {
 								$user_info = get_user_by( 'id', $approver );
 								$status    = $entry[ 'approval_status_' . $approver ];
 								if ( $status === false ) {
 									$status = 'pending';
-								}
-								if ( $status != 'pending' ) {
+								} elseif ( $status != 'pending' ) {
 									$has_been_approved = true;
 								}
+								if ( $status === false || $status == 'pending' ) {
+									if ( $current_user->ID == $approver ) {
+										$current_user_is_approver = true;
+									}
+								}
 								echo '<li>' . $user_info->display_name . ': ' . $status . '</li>';
+
 							}
 						}
 					}
@@ -350,7 +356,7 @@ class GF_Approvals extends GFFeedAddOn {
 				</ul>
 				<div>
 					<?php
-					if ( isset( $entry[ 'approval_status_' . $current_user->ID ] ) && ( $entry[ 'approval_status_' . $current_user->ID ] == 'pending' || $entry[ 'approval_status_' . $current_user->ID ] === false ) ) {
+					if ( $current_user_is_approver ) {
 						?>
 						<form method="post" id="sidebar_form" enctype='multipart/form-data'>
 							<?php wp_nonce_field( 'gf_approvals' );	?>
@@ -443,6 +449,11 @@ class GF_Approvals extends GFFeedAddOn {
 	}
 
 	function disable_registration( $is_disabled, $form, $entry, $fulfilled ) {
+
+		$feeds = $this->get_feeds( $form['id'] );
+		if ( empty( $feeds ) ) {
+			return false;
+		}
 
 		//check status to decide if registration should be stopped
 		if ( isset( $entry['approval_status'] ) && $entry['approval_status'] == 'approved' ) {

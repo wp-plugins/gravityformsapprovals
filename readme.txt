@@ -67,6 +67,10 @@ Ensure your role is assigned the gravityformsapprovals_form_settings capability 
 
 == ChangeLog ==
 
+= 1.0-beta-5 =
+- Fixed an issue where User Registration is skipped even when there are no approval feeds.
+- Fixed an issue where the approval buttons appear even when conditional logic is not met.
+
 = 1.0-beta-4 =
 - Added the gravityformsapprovals_form_settings and gravityformsapprovals_uninstall capabilities for integration with the Members plugin.
 - Updated some strings to be translatable.
