@@ -18,7 +18,7 @@ Adds simple approval processes to forms.
 
 If you use it and like it [please consider giving it a rating](http://wordpress.org/plugins/gravityformsapprovals/).
 
-If this add-on doesn't quite meet your needs, or if you'd like an add-on that will grow with your business workflow processes you may want to check out [Gravity Flow](http://gravityflow.io). Gravity Flow supports multiple steps, process branching and loops, user input, approval policies, advanced conditional routing, timestamps, audit trail, comments, and it has a complete interface for users with admin pages for pending tasks, submitting forms, and viewing the status of previously submitted forms.
+If this add-on doesn't quite meet your needs, or if you'd like an add-on that will grow with your business workflow processes you may want to check out [Gravity Flow](https://gravityflow.io). Gravity Flow supports multiple steps, process branching and loops, user input, approval policies, advanced conditional routing, timestamps, audit trail, comments, and it has a complete interface for users for pending tasks, submitting forms, and viewing the status of previously submitted forms.
 
 Stay in touch on [Facebook](https://www.facebook.com/hentydevelopment) or visit my [blog](http://www.stevenhenty.com).
 
