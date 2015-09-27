@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------------------------------------------
+Version 1.0.0
+	- Bumping version
+
+-------------------------------------------------------------------------------------------------------------------
 Version 1.0-beta-5
 	- Fixed an issue where User Registration is skipped even when there are no approval feeds.
 	- Fixed an issue where the approval buttons appear even when conditional logic is not met.
